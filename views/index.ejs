@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>I hate you</title>
+</head>
+<body>
+    <div class="main min-h-screen w-full bg-zinc-900">
+        <div class="form p-10 text-white">
+            <form action="/create" method="post"> 
+                <input class="block w-full px-5 py-2 outline-none rounded-lg bg-zinc-800 " type="text" placeholder="Title goes here" name="title">
+                <textarea class="block w-full px-5 py-2 outline-none rounded-lg resize-none mt-4 bg-zinc-800 " placeholder="write your tasks here" name="details"></textarea>
+                <input class="mt-3 bg-blue-800 hover:bg-blue-700 rounded-md px-5 py-2"  type="submit" value="Create task">
+            </form>
+        </div>
+        <div class="tasks p-10 flex gap-3 flex-wrap p-10">
+        <!-- <% /* This is an Important bit (((THIS IS COMMENT))) */ %>   -->
+            <% if(files.length > 0){ %>
+                <% files.forEach(function(val){%>
+                    <div class="task bg-zinc-800 px-3 py-2 min-w-96 rounded-md">
+                        <h1 class="text-white text-3xl tracking-tight"><%= val %></h1>
+                        <div class="flex mt-3 justify-between items-center">
+                            <a class="text-blue-400 hover:text-blue-500 inline-block" href="/files/<%= val %>">Read more..</a>
+                            <a class="text-zinc-500 hover:text-zinc-400" href="/edit/<%= val %>">edit</a>
+                        </div>
+                    </div>
+                <% }) %>
+            <% } else { %>
+                <h3 class="text-zinc-500 ">no tasks here</h3>
+            <% } %>
+        </div>
+    </div>
+</body>
+</html>
